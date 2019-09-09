@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-
-#OBS.: O preprocessamento foi feito convertendo a base de dados em .arff para .csv, utilizando o python no .csv e após isso retornando para o .arff
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 
+#Completando dados vazios#
 missing_values = ['?','NaN']
 col_names = ['age','bp','sg','al','su','rbc','pc','pcc','ba','bgr','bu','sc','sod','pot','hemo','pcv','wbcc','rbcc','htn','dm','cad','appet','pe','ane','class']
 
@@ -82,8 +82,9 @@ base = base.fillna(value = missing)
 base = base.drop(0)
 
 
-base.to_csv(r'C:\Users\Home\Desktop\Estudos\Chronic_Kidney_Disease\basededadosarrumada.csv')
+base.to_csv(r'C:\Users\Home\Desktop\Estudos\Chronic_Kidney_Disease\basededadosarrumada2.csv')
 
+#Transformar classes em números#
 
 #predictors = base.iloc[:,0:24].values
 #classes = base.iloc[:, 24].values
@@ -96,13 +97,14 @@ base.to_csv(r'C:\Users\Home\Desktop\Estudos\Chronic_Kidney_Disease\basededadosar
 #labelencoder_predictors = LabelEncoder()
 
 #for i in range(24):
- #   predictors[:,i] = labelencoder_predictors.fit_transform(predictors[:,i])
+#   predictors[:,i] = labelencoder_predictors.fit_transform(predictors[:,i])
 
 #classes[:] = labelencoder_predictors.fit_transform(classes[:])
 
 #base.to_csv(r'C:\Users\Home\Desktop\Estudos\Chronic_Kidney_Disease\basededadosarrumada.csv')
 
+#Normalizar#
 #x = base.values #returns a numpy array
-#min_max_scaler = preprocessing.MinMaxScaler()
+#min_max_scaler = MinMaxScaler()
 #x_scaled = min_max_scaler.fit_transform(x)
 #base = pd.DataFrame(x_scaled)
